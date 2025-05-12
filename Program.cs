@@ -141,7 +141,7 @@ namespace _9200
         }
 
         //ret size of nums
-        static int Getsize()
+        static int GetSize()
         {
             return length;
         }
@@ -170,10 +170,16 @@ namespace _9200
             Console.WriteLine(num);
         }
 
-        //ret if all numbers is valid
-        static bool Initialize(string[] series)
+        //over writ func for print dubel
+        static void Printer(double num)
         {
-            int len = series.Length;
+            Console.WriteLine(num);
+        }
+
+        //ret if all numbers is valid
+        static bool Initialize(List<string> series)
+        {
+            int len = series.Count;
             if (len < 3) return false;
             int[] nums = new int[len];
             
@@ -207,13 +213,68 @@ namespace _9200
                 "press 9 for: Exit.");
         }
 
-        static void Start(string[] args)
+        static void Start()
         {
-
+            int select = 0;
+            do
+            {
+                DisplayMenu();
+                if(int.TryParse(Console.ReadLine(), out select) || select > 9 || select < 1)
+                {
+                    Console.WriteLine("not valid choise try agein");
+                }
+                switch(select)
+                {
+                    case 1:
+                        Printer(GetNumbers());
+                        break;
+                    case 2:
+                        Printer(GetRevers());
+                        break;
+                    case 3:
+                        Printer(Sort());
+                        break;
+                    case 4:
+                        Printer(getMax());
+                        break;
+                    case 5:
+                        Printer(GetMin());
+                        break;
+                    case 6:
+                        Printer(GetAvg());
+                        break;
+                    case 7:
+                        Printer(GetSize());
+                        break;
+                    case 8:
+                        Printer(GetAvg());
+                        break;
+                }
+            }while (select != 9);
         }
         static void Main(string[] args)
         {
-            
+            List<string> initNums = new List<string>();
+            do
+            {
+                if (args.Length < 3)
+                {
+                    Console.WriteLine("enter at least three positive numbers for exit prees -1");
+                    string num = "-1";
+                    do
+                    {
+                        num = Console.ReadLine();
+                        initNums.Add(num);
+                    }
+                    while (num != "-1");
+
+                }
+                else
+                {
+                    initNums = new List<string>(args);
+                }
+            } while (Initialize(initNums));
+            Start();
         }
     }
 }
