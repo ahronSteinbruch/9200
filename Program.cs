@@ -88,12 +88,13 @@ namespace _9200
 
 
         //return the series
-        static int[] Display()
+        static int[] GetNumbers()
         {
             return numbers; 
         }
+
         //return the series in revers order
-        static int[] DisplayRevers()
+        static int[] GetRevers()
         {
             int[] revers = new int[length];
             for (int i = 0; i < length; i++)
@@ -102,12 +103,14 @@ namespace _9200
             }
             return revers;
         }
+
         
         static int[] Sort()
         {
             int[] sorted = new int[length];
             for(int i = 0; i < length;) sorted[i] = numbers[i];
-            s
+            mergeSort(sorted, 0, length);
+            return sorted;
         }
 
         static void Main(string[] args)
