@@ -12,7 +12,7 @@ namespace _9200
         static int sum = 0;
         static int[] numbers;
 
-        static void merge(int[] numbers, int l, int m, int r)
+        static void Merge(int[] numbers, int l, int m, int r)
         {
             int n1 = m - l + 1;
             int n2 = r - m;
@@ -69,7 +69,7 @@ namespace _9200
             }
         }
 
-        static void mergeSort(int[] numbers, int l, int r)
+        static void MergeSort(int[] numbers, int l, int r)
         {
             if (l < r)
             {
@@ -78,11 +78,11 @@ namespace _9200
                 int m = l + (r - l) / 2;
 
                 // Sort first and second halves
-                mergeSort(numbers, l, m);
-                mergeSort(numbers, m + 1, r);
+                MergeSort(numbers, l, m);
+                MergeSort(numbers, m + 1, r);
 
                 // Merge the sorted halves
-                merge(numbers, l, m, r);
+                Merge(numbers, l, m, r);
             }
         }
 
@@ -130,7 +130,7 @@ namespace _9200
         {
             int[] sorted = new int[length];
             for(int i = 0; i < length;) sorted[i] = numbers[i];
-            mergeSort(sorted, 0, length);
+            MergeSort(sorted, 0, length);
             return sorted;
         }
 
@@ -171,17 +171,26 @@ namespace _9200
         }
 
         //ret if all numbers is valid
-        static bool isValidSeries(string[] series)
+        static bool Initialize(string[] series)
         {
-            bool isValid = series.Length >= 3;
-            foreach (string st in series)
+            int len = series.Length;
+            if (len < 3) return false;
+            int[] nums = new int[len];
+            
+            for(int i = 0; i< len;i++)
             {
-                foreach (char c in st)
+                int temp;
+                if ((!int.TryParse(series[i], out temp))||temp < 0)
                 {
-                    if (!char.IsDigit(c))isValid = false;
-                }               
+                    sum = 0;
+                    return false;
+                }
+                sum += temp;
+                nums[i] = temp;
             }
-            return isValid;
+            numbers = nums;
+            length = len;
+            return true;
         }
 
         //Display Menu
@@ -197,9 +206,14 @@ namespace _9200
                 "press 8 for: Display the Sum of the series.\n" +
                 "press 9 for: Exit.");
         }
-        static void Main(string[] args)
+
+        static void Start(string[] args)
         {
 
+        }
+        static void Main(string[] args)
+        {
+            
         }
     }
 }
