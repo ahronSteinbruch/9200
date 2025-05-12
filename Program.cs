@@ -140,11 +140,19 @@ namespace _9200
             return (double) sum / (double)length;
         }
 
+        //ret size of nums
         static int Getsize()
         {
             return length;
         }
 
+        // ret the sum 
+        static double GetSum()
+        {
+            double sum = 0;
+            foreach (var item in numbers) sum += item;
+            return sum;
+        }
         static void Main(string[] args)
         {
 
