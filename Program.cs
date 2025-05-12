@@ -170,9 +170,10 @@ namespace _9200
             Console.WriteLine(num);
         }
 
+        //ret if all numbers is valid
         static bool isValidSeries(string[] series)
         {
-            bool isValid = true;
+            bool isValid = series.Length >= 3;
             foreach (string st in series)
             {
                 foreach (char c in st)
