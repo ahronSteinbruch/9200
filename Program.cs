@@ -161,6 +161,13 @@ namespace _9200
             {
                 Console.Write(arr[i] + " ");
             }
+            Console.WriteLine();
+        }
+
+        //over writ func for print intagers
+        static void Printer(int num)
+        {
+            Console.WriteLine(num);
         }
         static void Main(string[] args)
         {
