@@ -104,6 +104,27 @@ namespace _9200
             return revers;
         }
 
+        //ret the max val in numbers
+        static int getMax()
+        {
+            int max = numbers[0];
+            foreach (int item in numbers)
+            {
+                if (item > max) max = item;
+            }
+            return max;
+        }
+
+        //ret the min val in numbers
+        static int GetMin()
+        {
+            int min = numbers[0];
+            foreach (int item in numbers)
+            {
+                if (item > min) min = item;
+            }
+            return min;
+        }
         
         static int[] Sort()
         {
