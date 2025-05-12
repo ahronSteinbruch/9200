@@ -140,6 +140,11 @@ namespace _9200
             return (double) sum / (double)length;
         }
 
+        static int Getsize()
+        {
+            return length;
+        }
+
         static void Main(string[] args)
         {
 
