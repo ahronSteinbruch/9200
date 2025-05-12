@@ -169,6 +169,19 @@ namespace _9200
         {
             Console.WriteLine(num);
         }
+
+        static bool isValidSeries(string[] series)
+        {
+            bool isValid = true;
+            foreach (string st in series)
+            {
+                foreach (char c in st)
+                {
+                    if (!char.IsDigit(c))isValid = false;
+                }               
+            }
+            return isValid;
+        }
         static void Main(string[] args)
         {
 
