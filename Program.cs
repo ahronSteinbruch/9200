@@ -134,6 +134,12 @@ namespace _9200
             return sorted;
         }
 
+        //return the avg of numbers
+        static double GetAvg()
+        {
+            return (double) sum / (double)length;
+        }
+
         static void Main(string[] args)
         {
 
