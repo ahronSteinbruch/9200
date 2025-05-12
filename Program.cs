@@ -153,6 +153,15 @@ namespace _9200
             foreach (var item in numbers) sum += item;
             return sum;
         }
+
+        // print arrays
+        static void Printer(int[] arr)
+        {
+            for (int i = 0;i < arr.Length; i++)
+            {
+                Console.Write(arr[i] + " ");
+            }
+        }
         static void Main(string[] args)
         {
 
