@@ -183,6 +183,20 @@ namespace _9200
             }
             return isValid;
         }
+
+        //Display Menu
+        static void DisplayMenu()
+        {
+            Console.WriteLine("press 1 for: Display the series in the order it was entered.\n" +
+                "press 2 for: Display the series in the reversed order \n" +
+                "press 3 for: Display the series in sorted order\n" +
+                "press 4 for: Display the Max value of the series.\n" +
+                "press 5 for: Display the Min value of the series.\n" +
+                "press 6 for: Display the Average of the series.\n" +
+                "press 7 for: Display the Number of elements in the series.\n" +
+                "press 8 for: Display the Sum of the series.\n" +
+                "press 9 for: Exit.");
+        }
         static void Main(string[] args)
         {
 
