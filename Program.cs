@@ -253,13 +253,16 @@ namespace _9200
                 if (args.Length < 3)
                 {
                     Console.WriteLine("enter at least three positive numbers for exit prees -1");
+                    Console.WriteLine("enter a number");
                     string num = Console.ReadLine();
                     do
                     {
                         initNums.Add(num);
+                        Console.WriteLine("enter a number");
                         num = Console.ReadLine();
                     }
                     while (num != "-1");
+                    Console.WriteLine(initNums);
 
                 }
                 else
