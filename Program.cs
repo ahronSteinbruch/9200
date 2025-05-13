@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace _9200
         static int length = 0;
         static int sum = 0;
         static int[] numbers;
+        
 
         static void Merge(int[] numbers, int l, int m, int r)
         {
@@ -121,7 +123,7 @@ namespace _9200
             int min = numbers[0];
             foreach (int item in numbers)
             {
-                if (item > min) min = item;
+                if (item < min) min = item;
             }
             return min;
         }
@@ -149,10 +151,9 @@ namespace _9200
         // ret the sum 
         static double GetSum()
         {
-            double sum = 0;
-            foreach (var item in numbers) sum += item;
             return sum;
         }
+        
 
         // print arrays
         static void Printer(int[] arr)
@@ -189,6 +190,8 @@ namespace _9200
                 if ((!int.TryParse(series[i], out temp))||temp < 0)
                 {
                     sum = 0;
+                    Console.WriteLine("false");
+
                     return false;
                 }
                 sum += temp;
@@ -196,13 +199,15 @@ namespace _9200
             }
             numbers = nums;
             length = len;
+            Console.WriteLine("true");
             return true;
         }
 
         //Display Menu
         static void DisplayMenu()
         {
-            Console.WriteLine("press 1 for: Display the series in the order it was entered.\n" +
+            Console.WriteLine("press 0 for: insert a new seriea" +
+                "press 1 for: Display the series in the order it was entered.\n" +
                 "press 2 for: Display the series in the reversed order \n" +
                 "press 3 for: Display the series in sorted order\n" +
                 "press 4 for: Display the Max value of the series.\n" +
@@ -215,44 +220,32 @@ namespace _9200
 
         static void Start()
         {
-            int select = 0;
+            int select = 5;
             do
             {
                 DisplayMenu();
-                if(int.TryParse(Console.ReadLine(), out select) || select > 9 || select < 1)
+                if (!int.TryParse(Console.ReadLine(), out select) || select > 9 || select < 0)
                 {
                     Console.WriteLine("not valid choise try agein");
                 }
-                switch(select)
+                else
                 {
-                    case 1:
-                        Printer(GetNumbers());
-                        break;
-                    case 2:
-                        Printer(GetRevers());
-                        break;
-                    case 3:
-                        Printer(Sort());
-                        break;
-                    case 4:
-                        Printer(getMax());
-                        break;
-                    case 5:
-                        Printer(GetMin());
-                        break;
-                    case 6:
-                        Printer(GetAvg());
-                        break;
-                    case 7:
-                        Printer(GetSize());
-                        break;
-                    case 8:
-                        Printer(GetAvg());
-                        break;
-                }
-            }while (select != 9);
+                    switch (select)
+                    {
+                        case 0:Init(new string[1]);Start(); break;                            
+                        case 1:Printer(GetNumbers());break;    
+                        case 2:Printer(GetRevers());break;   
+                        case 3:Printer(Sort());break;    
+                        case 4:Printer(getMax());break;   
+                        case 5: Printer(GetMin());break;    
+                        case 6: Printer(GetAvg());break;     
+                        case 7: Printer(GetSize());break;
+                        case 8:Printer(GetSum());break; 
+                    }
+                } 
+            }while (select != 9) ;
         }
-        static void Main(string[] args)
+        static void Init(string[] args)
         {
             List<string> initNums = new List<string>();
             do
@@ -260,11 +253,11 @@ namespace _9200
                 if (args.Length < 3)
                 {
                     Console.WriteLine("enter at least three positive numbers for exit prees -1");
-                    string num = "-1";
+                    string num = Console.ReadLine();
                     do
                     {
-                        num = Console.ReadLine();
                         initNums.Add(num);
+                        num = Console.ReadLine();
                     }
                     while (num != "-1");
 
@@ -272,8 +265,13 @@ namespace _9200
                 else
                 {
                     initNums = new List<string>(args);
+                    Console.WriteLine("start init with the args");
                 }
-            } while (Initialize(initNums));
+            } while (!Initialize(initNums));
+        }
+        static void Main(string[] args)
+        {
+            Init(args);
             Start();
         }
     }
