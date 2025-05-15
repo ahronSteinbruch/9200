@@ -262,13 +262,10 @@ namespace _9200
                         num = Console.ReadLine();
                     }
                     while (num != "-1");
-                    Console.WriteLine(initNums);
-
                 }
                 else
                 {
                     initNums = new List<string>(args);
-                    Console.WriteLine("start init with the args");
                 }
             } while (!Initialize(initNums));
         }
